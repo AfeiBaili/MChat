@@ -45,6 +45,6 @@ bin/
 .DS_Store
 
 # Mirai
-Mirai/.gradle
-Mirai/.kotlin
-Mirai/build
+**/.gradle
+**/.kotlin
+**/build
