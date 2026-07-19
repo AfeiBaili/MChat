@@ -19,15 +19,18 @@ object Listener {
         GlobalEventChannel.filter { filterGroup(it) }.subscribeAlways<GroupMessageEvent> { event ->
             val groupName = event.group.name
             val nick = event.sender.nick
-            val message = event.message.content
-            server.sendAll(MessageType.Text("$groupName $nick", message, ""))
-            event.message.forEach {
+
+            println(event.message.size)
+
+            event.message.filter { it.content.isNotBlank() }.forEach {
                 if (it is Image) server.sendAll(
                     MessageType.Image(
                         "$groupName $nick",
                         it.queryUrl()
                     )
-                )
+                ) else {
+                    server.sendAll(MessageType.Text("$groupName $nick", it.content, ""))
+                }
             }
         }
 
