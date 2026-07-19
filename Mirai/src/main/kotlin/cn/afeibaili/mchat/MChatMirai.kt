@@ -35,7 +35,7 @@ object MChatMirai : KotlinPlugin(
     val config = Config.load()
 
     val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
-    val server =
+    val server: Server =
         Server(
             config,
             MessageCallback(
@@ -47,6 +47,9 @@ object MChatMirai : KotlinPlugin(
                             }
                         }
                     }),
+                onMessage = { message, socket ->
+                    server.sendAll(message, socket)
+                }
             ),
             onVerify = { Listener.sendMessage("${it.source}服务器已连接") })
 }
