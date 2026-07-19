@@ -21,12 +21,12 @@ class MessageListener {
     }
 
     @SubscribeEvent
-    fun onPlayerLogin(event: PlayerEvent.PlayerLoggedInEvent) {
+    fun onPlayerLoginIn(event: PlayerEvent.PlayerLoggedInEvent) {
         MChat.client?.send(MessageType.Text("${event.entity.name.string}", "加入了${config.name}"))
     }
 
     @SubscribeEvent
-    fun onPlayerLogin(event: PlayerEvent.PlayerLoggedOutEvent) {
+    fun onPlayerLoginOut(event: PlayerEvent.PlayerLoggedOutEvent) {
         MChat.client?.send(MessageType.Text("${event.entity.name.string}", "退出了${config.name}"))
     }
 }

@@ -23,8 +23,9 @@ object MChat {
     var client: Client? = null
     lateinit var config: ClientConfig
     var style: Style = Style.EMPTY.withColor(TextColor.parseColor("#AAAAAA").result().get())
-    val hoverStyle: Style = Style.EMPTY.withColor(TextColor.parseColor("#3D00A6").result().get())
-        .withHoverEvent(HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.literal("打开图片连接")))
+    val hoverStyle: Style = Style.EMPTY
+            .withColor(TextColor.parseColor("#3D00A6").result().get())
+        .withHoverEvent(HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.literal("打开图片链接")))
 
     init {
         NeoForge.EVENT_BUS.register(this)
@@ -67,8 +68,7 @@ object MChat {
         server?.playerList?.players?.forEach { player ->
             player.sendSystemMessage(
                 Component.literal("${message.source}: ").setStyle(style).append(
-                    Component.literal("[图片]").withStyle(
-                        hoverStyle.withClickEvent(
+                    Component.literal("[图片]").withStyle(hoverStyle.withClickEvent(
                             ClickEvent(ClickEvent.Action.OPEN_URL, message.content)
                         )
                     )
