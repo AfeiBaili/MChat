@@ -48,3 +48,6 @@ bin/
 **/.gradle
 **/.kotlin
 **/build
+# Minecraft
+**/run/
+**/runs/

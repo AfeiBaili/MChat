@@ -1,7 +1,7 @@
 import net.mamoe.mirai.console.gradle.BuildMiraiPluginV2
 
 plugins {
-    val kotlinVersion = "2.2.20"
+    val kotlinVersion = "2.0.0"
     kotlin("jvm") version kotlinVersion
     id("net.mamoe.mirai-console") version "2.16.0"
 }

@@ -2,6 +2,7 @@ package cn.afeibaili.mchat
 
 import cn.afeibaili.mchat.MChatMirai.server
 import cn.afeibaili.mchat.message.MessageType
+import kotlinx.coroutines.launch
 import net.mamoe.mirai.Bot
 import net.mamoe.mirai.contact.Member
 import net.mamoe.mirai.event.Event
@@ -20,6 +21,14 @@ object Listener {
 
         GlobalEventChannel.subscribeAlways<BotOnlineEvent> { event ->
             Listener.bot = event.bot
+        }
+    }
+
+    fun sendMessage(message: String) {
+        MChatMirai.scope.launch {
+            MChatMirai.config.groups.forEach {
+                bot?.groups[it]?.sendMessage(message)
+            }
         }
     }
 

@@ -1,7 +1,7 @@
 package cn.afeibaili.mchat
 
 import cn.afeibaili.mchat.Listener.bot
-import cn.afeibaili.mchat.message.MessageParser
+import cn.afeibaili.mchat.message.MessageCallback
 import cn.afeibaili.mchat.message.MessageType
 import cn.afeibaili.mchat.socket.Server
 import kotlinx.coroutines.CoroutineScope
@@ -25,8 +25,7 @@ object MChatMirai : KotlinPlugin(
         version = "4.0.0",
     ) {
         author("AfeiBaili")
-    }
-) {
+    }) {
     override fun onEnable() {
         Listener.load()
         server.start()
@@ -36,16 +35,18 @@ object MChatMirai : KotlinPlugin(
     val config = Config.load()
 
     val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
-    val server = Server(
-        config,
-        MessageParser(
-            mapOf(
-                MessageType.Identifiers.Text to { type ->
-                    config.groups.forEach { group ->
-                        scope.launch { bot?.groups?.get(group)?.sendMessage("${type.source}: ${type.content}") }
-                    }
-                }
-            )
-        )
-    )
+    val server =
+        Server(
+            config,
+            MessageCallback(
+                mapOf(
+                    MessageType.Identifiers.Text to { type ->
+                        scope.launch {
+                            config.groups.forEach {
+                                bot?.groups?.get(it)?.sendMessage("${type.source}: ${type.content}")
+                            }
+                        }
+                    }),
+            ),
+            onVerify = { Listener.sendMessage("${it.source}服务器已连接") })
 }
