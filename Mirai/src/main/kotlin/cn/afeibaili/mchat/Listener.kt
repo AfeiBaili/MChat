@@ -4,19 +4,21 @@ import cn.afeibaili.mchat.MChatMirai.server
 import cn.afeibaili.mchat.message.MessageType
 import kotlinx.coroutines.launch
 import net.mamoe.mirai.Bot
-import net.mamoe.mirai.contact.Member
 import net.mamoe.mirai.event.Event
 import net.mamoe.mirai.event.GlobalEventChannel
 import net.mamoe.mirai.event.events.BotOnlineEvent
 import net.mamoe.mirai.event.events.GroupMessageEvent
+import net.mamoe.mirai.message.data.content
 
 object Listener {
     var bot: Bot? = null
 
     fun load() {
         GlobalEventChannel.filter { filterGroup(it) }.subscribeAlways<GroupMessageEvent> { event ->
-            val messageSender: Member = event.sender
-            server.send(MessageType.Text(messageSender.nick, event.message.contentToString(), ""))
+            val groupName = event.group.name
+            val nick = event.sender.nick
+            val message = event.message.content
+            server.send(MessageType.Text("$groupName ${nick}", message, ""))
         }
 
         GlobalEventChannel.subscribeAlways<BotOnlineEvent> { event ->
