@@ -20,8 +20,6 @@ object Listener {
             val groupName = event.group.name
             val nick = event.sender.nick
 
-            println(event.message.size)
-
             event.message.filter { it.content.isNotBlank() }.forEach {
                 if (it is Image) server.sendAll(
                     MessageType.Image(
