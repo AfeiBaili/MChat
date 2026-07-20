@@ -1,8 +1,8 @@
 package cn.afeibaili.mchat
 
+import cn.afeibaili.mchat.MChatMirai.config
 import cn.afeibaili.mchat.MChatMirai.server
 import cn.afeibaili.mchat.message.MessageType
-import kotlinx.coroutines.launch
 import net.mamoe.mirai.Bot
 import net.mamoe.mirai.event.Event
 import net.mamoe.mirai.event.GlobalEventChannel
@@ -37,12 +37,16 @@ object Listener {
         }
     }
 
-    fun sendMessage(message: String) {
-        MChatMirai.scope.launch {
-            MChatMirai.config.groups.forEach {
-                bot?.groups[it]?.sendMessage(message)
-            }
+    suspend fun sendMessage(channel: String, text: String) {
+        val channel: String = channel
+        if (channel == "all") config.groups.forEach {
+            bot?.groups?.get(it)?.sendMessage(text)
+            return
         }
+
+        val groupStrings: List<String> = channel.split(",")
+        val longs: List<Long> = groupStrings.mapNotNull { it.toLongOrNull() }
+        longs.forEach { if (it in config.groups) bot?.groups?.get(it)?.sendMessage(text) }
     }
 
     fun filterGroup(event: Event): Boolean {

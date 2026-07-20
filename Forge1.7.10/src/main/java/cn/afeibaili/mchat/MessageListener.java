@@ -22,17 +22,17 @@ public class MessageListener {
     @SubscribeEvent
     public void onMessage(ServerChatEvent event) {
         String source = "[" + config.getName() + "] " + event.username;
-        Optional.ofNullable(client).ifPresent(client -> client.send(new MessageType.Text(source, event.message, "")));
+        Optional.ofNullable(client).ifPresent(client -> client.send(new MessageType.Text(source, event.message, config.getChannel())));
     }
 
     @SubscribeEvent
     public void onPlayerLoginIn(PlayerEvent.PlayerLoggedInEvent event) {
-        Optional.ofNullable(MChat.client).ifPresent(client -> client.send(new MessageType.Text(event.player.getCommandSenderName(), "加入了" + config.getName(), "")));
+        Optional.ofNullable(MChat.client).ifPresent(client -> client.send(new MessageType.Text(event.player.getCommandSenderName(), "加入了" + config.getName(), config.getChannel())));
 
     }
 
     @SubscribeEvent
     public void onPlayerLoginOut(PlayerEvent.PlayerLoggedOutEvent event) {
-        Optional.ofNullable(MChat.client).ifPresent(client -> client.send(new MessageType.Text(event.player.getCommandSenderName(), "退出了" + config.getName(), "")));
+        Optional.ofNullable(MChat.client).ifPresent(client -> client.send(new MessageType.Text(event.player.getCommandSenderName(), "退出了" + config.getName(), config.getChannel())));
     }
 }

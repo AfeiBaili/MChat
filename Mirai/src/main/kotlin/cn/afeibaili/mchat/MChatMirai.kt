@@ -1,6 +1,5 @@
 package cn.afeibaili.mchat
 
-import cn.afeibaili.mchat.Listener.bot
 import cn.afeibaili.mchat.message.MessageCallback
 import cn.afeibaili.mchat.message.MessageType
 import cn.afeibaili.mchat.socket.Server
@@ -43,16 +42,7 @@ object MChatMirai : KotlinPlugin(
                     MessageType.Identifiers.Text to { message ->
                         scope.launch {
                             val text = "${message.source}: ${message.content}"
-                            if (message.channel == "all") {
-                                config.groups.forEach {
-                                    bot?.groups?.get(it)?.sendMessage(text)
-                                }
-                                return@launch
-                            }
-
-                            val groupStrings: List<String> = message.channel.split(",")
-                            val longs: List<Long> = groupStrings.mapNotNull { it.toLongOrNull() }
-                            longs.forEach { if (it in config.groups) bot?.groups?.get(it)?.sendMessage(text) }
+                            Listener.sendMessage(message.channel, text)
                         }
                     }),
                 onMessage = { message, socket ->
@@ -60,6 +50,6 @@ object MChatMirai : KotlinPlugin(
                 }
             ),
             onVerify = { message, socket ->
-                Listener.sendMessage("${message.source}服务器已连接")
+                scope.launch { Listener.sendMessage(message.channel, "${message.source}服务器已连接") }
             })
 }

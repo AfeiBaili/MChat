@@ -50,7 +50,11 @@ public class MChat {
     public static void startMchat() {
         Optional.ofNullable(client).ifPresent(Client::close);
         config = ConfigLoader.INSTANCE.loadClient();
-        client = new Client(config, new MessageCallback(map, (m, s) -> Unit.INSTANCE));
+        if (config == null) {
+            logger.error("无法加载配置文件，请检查是否完整");
+            return;
+        }
+        client = new Client(config, new MessageCallback(map, (m, s) -> Unit.INSTANCE), config.getChannel());
         Optional.of(client).ifPresent(Client::connect);
         logger.info("客户端已就绪");
     }

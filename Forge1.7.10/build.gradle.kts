@@ -11,5 +11,5 @@ tasks.named("shadowJar", ShadowJar::class) {
 }
 
 tasks.jar {
-    archiveFileName.set("mchat-forge-1.7.10-4.0.0.jar")
+    archiveFileName.set("mchat-forge-1.7.10-4.2.0.jar")
 }
