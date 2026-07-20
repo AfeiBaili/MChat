@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ddec7689-001f-496f-8343-e8ff2d84e22f" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/../Forge1.7.10/src/main/java/cn/afeibaili/mchat/Command.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Forge1.7.10/src/main/java/cn/afeibaili/mchat/MessageListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Forge1.7.10/dependencies.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../Forge1.7.10/dependencies.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Forge1.7.10/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Forge1.7.10/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Forge1.7.10/repositories.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../Forge1.7.10/repositories.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Forge1.7.10/src/main/java/cn/afeibaili/mchat/MChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Forge1.7.10/src/main/java/cn/afeibaili/mchat/MChat.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,6 +227,7 @@
       <workItem from="1784518431695" duration="406000" />
       <workItem from="1784524358046" duration="1000" />
       <workItem from="1784524369319" duration="2000" />
+      <workItem from="1784543097950" duration="3823000" />
     </task>
     <servers />
   </component>

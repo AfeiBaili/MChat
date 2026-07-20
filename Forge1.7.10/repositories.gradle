@@ -1,5 +1,12 @@
 // Add any additional repositories for your dependencies here.
 
 repositories {
-
+    maven {
+        name = "MChatLibrary"
+        url = "https://maven.pkg.github.com/afeibaili/mchatlibrary"
+        credentials {
+            username = System.getenv("GITHUB_ACCOUNT")
+            password = System.getenv("GITHUB_TOKEN")
+        }
+    }
 }
