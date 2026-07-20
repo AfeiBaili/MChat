@@ -21,10 +21,10 @@ object MChat {
     val logger: Logger = LogManager.getLogger(ID)
     var server: MinecraftServer? = null
     var client: Client? = null
-    lateinit var config: ClientConfig
+    var config: ClientConfig? = null
     var style: Style = Style.EMPTY.withColor(TextColor.parseColor("#AAAAAA").result().get())
     val hoverStyle: Style = Style.EMPTY
-            .withColor(TextColor.parseColor("#3D00A6").result().get())
+        .withColor(TextColor.parseColor("#3D00A6").result().get())
         .withHoverEvent(HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.literal("打开图片链接")))
 
     init {
@@ -36,12 +36,17 @@ object MChat {
     fun startMchat() {
         client?.close()
         config = ConfigLoader.loadClient()
+        if (config == null) {
+            logger.error("无法加载配置文件，请检查是否完整")
+            return
+        }
         client = Client(
-            config, MessageCallback(
+            config!!, MessageCallback(
                 mapOf(
                     MessageType.Identifiers.Text to { sendTextToPlayer(it) },
                     MessageType.Identifiers.Image to { sendImageToPlayer(it) })
-            )
+            ),
+            config!!.channel
         )
         client?.connect()
         logger.info("客户端已就绪")
@@ -68,7 +73,8 @@ object MChat {
         server?.playerList?.players?.forEach { player ->
             player.sendSystemMessage(
                 Component.literal("${message.source}: ").setStyle(style).append(
-                    Component.literal("[图片]").withStyle(hoverStyle.withClickEvent(
+                    Component.literal("[图片]").withStyle(
+                        hoverStyle.withClickEvent(
                             ClickEvent(ClickEvent.Action.OPEN_URL, message.content)
                         )
                     )

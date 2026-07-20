@@ -17,16 +17,40 @@ import online.afeibaili.mchat.MChat.config
 class MessageListener {
     @SubscribeEvent
     fun onMessage(event: ServerChatEvent) {
-        MChat.client?.send(MessageType.Text("[${config.name}] ${event.username}", event.message.string))
+        runCatching {
+            MChat.client?.send(
+                MessageType.Text(
+                    "[${config!!.name}] ${event.username}",
+                    event.message.string,
+                    config!!.channel
+                )
+            )
+        }
     }
 
     @SubscribeEvent
     fun onPlayerLoginIn(event: PlayerEvent.PlayerLoggedInEvent) {
-        MChat.client?.send(MessageType.Text("${event.entity.name.string}", "加入了${config.name}"))
+        runCatching {
+            MChat.client?.send(
+                MessageType.Text(
+                    "${event.entity.name.string}",
+                    "加入了${config!!.name}",
+                    config!!.channel
+                )
+            )
+        }
     }
 
     @SubscribeEvent
     fun onPlayerLoginOut(event: PlayerEvent.PlayerLoggedOutEvent) {
-        MChat.client?.send(MessageType.Text("${event.entity.name.string}", "退出了${config.name}"))
+        runCatching {
+            MChat.client?.send(
+                MessageType.Text(
+                    "${event.entity.name.string}",
+                    "退出了${config!!.name}",
+                    config!!.channel
+                )
+            )
+        }
     }
 }
