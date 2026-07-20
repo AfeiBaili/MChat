@@ -10,6 +10,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescription
 import net.mamoe.mirai.console.plugin.jvm.KotlinPlugin
+import java.net.Socket
 
 /**
  * # Mirai插件入口
@@ -33,6 +34,7 @@ object MChatMirai : KotlinPlugin(
     }
 
     val config = Config.load()
+    val channelSocket = mutableMapOf<String, Socket>()
 
     val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     val server: Server =
@@ -40,16 +42,27 @@ object MChatMirai : KotlinPlugin(
             config,
             MessageCallback(
                 mapOf(
-                    MessageType.Identifiers.Text to { type ->
+                    MessageType.Identifiers.Text to { message ->
                         scope.launch {
-                            config.groups.forEach {
-                                bot?.groups?.get(it)?.sendMessage("${type.source}: ${type.content}")
+                            val text = "${message.source}: ${message.content}"
+                            if (message.channel == "all") {
+                                config.groups.forEach {
+                                    bot?.groups?.get(it)?.sendMessage(text)
+                                }
+                                return@launch
                             }
+
+                            val groupStrings: List<String> = message.channel.split(",")
+                            val longs: List<Long> = groupStrings.mapNotNull { it.toLongOrNull() }
+                            longs.forEach { if (it in config.groups) bot?.groups?.get(it)?.sendMessage(text) }
                         }
                     }),
                 onMessage = { message, socket ->
                     server.sendAll(message, socket)
                 }
             ),
-            onVerify = { Listener.sendMessage("${it.source}服务器已连接") })
+            onVerify = { message, socket ->
+                channelSocket.put(message.channel, socket)
+                Listener.sendMessage("${message.source}服务器已连接")
+            })
 }
