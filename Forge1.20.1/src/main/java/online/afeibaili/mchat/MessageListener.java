@@ -20,16 +20,16 @@ public class MessageListener {
     @SubscribeEvent
     public void onMessage(ServerChatEvent event) {
         String source = "[" + config.getName() + "] " + event.getUsername();
-        Optional.ofNullable(MChat.client).ifPresent(client -> client.send(new MessageType.Text(source, event.getMessage().getString(), "")));
+        Optional.ofNullable(MChat.client).ifPresent(client -> client.send(new MessageType.Text(source, event.getMessage().getString(), config.getChannel())));
     }
 
     @SubscribeEvent
     public void onPlayerLoginIn(PlayerEvent.PlayerLoggedInEvent event) {
-        Optional.ofNullable(MChat.client).ifPresent(client -> client.send(new MessageType.Text(event.getEntity().getName().getString(), "加入了" + config.getName(), "")));
+        Optional.ofNullable(MChat.client).ifPresent(client -> client.send(new MessageType.Text(event.getEntity().getName().getString(), "加入了" + config.getName(), config.getChannel())));
     }
 
     @SubscribeEvent
     public void onPlayerLoginOut(PlayerEvent.PlayerLoggedOutEvent event) {
-        Optional.ofNullable(MChat.client).ifPresent(client -> client.send(new MessageType.Text(event.getEntity().getName().getString(), "退出了" + config.getName(), "")));
+        Optional.ofNullable(MChat.client).ifPresent(client -> client.send(new MessageType.Text(event.getEntity().getName().getString(), "退出了" + config.getName(), config.getChannel())));
     }
 }

@@ -8,6 +8,7 @@ import cn.afeibaili.mchat.socket.Client;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.event.FMLServerStoppingEvent;
+import cpw.mods.fml.common.network.NetworkCheckHandler;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import net.minecraft.event.ClickEvent;
@@ -24,7 +25,13 @@ import org.apache.logging.log4j.Logger;
 import java.util.HashMap;
 import java.util.Optional;
 
-@Mod(modid = MChat.MODID, version = Tags.VERSION, name = "MChat", acceptedMinecraftVersions = "[1.7.10]", acceptableRemoteVersions = "*")
+@Mod(modid = MChat.MODID,
+    version = Tags.VERSION,
+    name = "MChat",
+    acceptedMinecraftVersions = "[1.7.10]",
+    acceptableRemoteVersions = "*",
+    acceptableSaveVersions = "*"
+)
 public class MChat {
 
     public static final String MODID = "mchat";
