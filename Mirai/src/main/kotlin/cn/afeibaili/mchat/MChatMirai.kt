@@ -10,7 +10,6 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescription
 import net.mamoe.mirai.console.plugin.jvm.KotlinPlugin
-import java.net.Socket
 
 /**
  * # Mirai插件入口
@@ -34,7 +33,6 @@ object MChatMirai : KotlinPlugin(
     }
 
     val config = Config.load()
-    val channelSocket = mutableMapOf<String, Socket>()
 
     val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     val server: Server =
@@ -62,7 +60,6 @@ object MChatMirai : KotlinPlugin(
                 }
             ),
             onVerify = { message, socket ->
-                channelSocket.put(message.channel, socket)
                 Listener.sendMessage("${message.source}服务器已连接")
             })
 }
