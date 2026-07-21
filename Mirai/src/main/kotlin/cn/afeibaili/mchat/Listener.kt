@@ -14,6 +14,7 @@ import net.mamoe.mirai.message.data.content
 
 object Listener {
     var bot: Bot? = null
+    var channel = config.groups.joinToString(",")
 
     fun load() {
         GlobalEventChannel.filter { filterGroup(it) }.subscribeAlways<GroupMessageEvent> { event ->
@@ -23,11 +24,10 @@ object Listener {
             event.message.filter { it.content.isNotBlank() }.forEach {
                 if (it is Image) server.sendAll(
                     MessageType.Image(
-                        "$groupName $nick",
-                        it.queryUrl()
+                        "$groupName $nick", it.queryUrl()
                     )
                 ) else {
-                    server.sendAll(MessageType.Text("$groupName $nick", it.content, ""))
+                    server.sendAll(MessageType.Text("$groupName $nick", it.content, channel))
                 }
             }
         }

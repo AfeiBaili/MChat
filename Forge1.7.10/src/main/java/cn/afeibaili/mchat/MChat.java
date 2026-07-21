@@ -5,10 +5,10 @@ import cn.afeibaili.mchat.config.ConfigLoader;
 import cn.afeibaili.mchat.message.MessageCallback;
 import cn.afeibaili.mchat.message.MessageType;
 import cn.afeibaili.mchat.socket.Client;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.event.FMLServerStoppingEvent;
-import cpw.mods.fml.common.network.NetworkCheckHandler;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import net.minecraft.event.ClickEvent;
@@ -42,7 +42,9 @@ public class MChat {
     protected static HashMap<MessageType.Identifiers, Function1<MessageType, Unit>> map = new HashMap<>();
 
     public MChat() {
-        MinecraftForge.EVENT_BUS.register(new MessageListener());
+        MessageListener listener = new MessageListener();
+        MinecraftForge.EVENT_BUS.register(listener);
+        FMLCommonHandler.instance().bus().register(listener);
 
         map.put(MessageType.Identifiers.Text, (message) -> {
             sendTextToPlayer(message);

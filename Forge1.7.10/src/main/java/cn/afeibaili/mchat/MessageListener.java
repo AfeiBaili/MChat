@@ -1,6 +1,7 @@
 package cn.afeibaili.mchat;
 
 import cn.afeibaili.mchat.message.MessageType;
+import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.event.ServerChatEvent;
@@ -19,7 +20,7 @@ import static cn.afeibaili.mchat.MChat.config;
 
 public class MessageListener {
 
-    @SubscribeEvent
+    @SubscribeEvent(receiveCanceled = true, priority = EventPriority.HIGHEST)
     public void onMessage(ServerChatEvent event) {
         String source = "[" + config.getName() + "] " + event.username;
         Optional.ofNullable(client).ifPresent(client -> client.send(new MessageType.Text(source, event.message, config.getChannel())));

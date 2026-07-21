@@ -16,7 +16,7 @@ import java.io.File
 class Config(
     override val port: Int,
     override val token: String,
-    val groups: Set<Long>,
+    val groups: List<Long>,
 ) : ServerConfig(token, port) {
     companion object {
         val json = ObjectMapper().registerKotlinModule()
@@ -29,7 +29,7 @@ class Config(
                 file.createNewFile()
                 file.writeText(
                     json.writerWithDefaultPrettyPrinter().writeValueAsString(
-                        Config(33393, "qwd#5q&4e", mutableSetOf())
+                        Config(33393, "qwd#5q&4e", mutableListOf())
                     )
                 )
             }
