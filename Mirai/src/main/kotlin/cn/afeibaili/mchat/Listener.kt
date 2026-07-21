@@ -39,8 +39,10 @@ object Listener {
 
     suspend fun sendMessage(channel: String, text: String) {
         val channel: String = channel
-        if (channel == "all") config.groups.forEach {
-            bot?.groups?.get(it)?.sendMessage(text)
+        if (channel == "all") {
+            config.groups.forEach {
+                bot?.groups?.get(it)?.sendMessage(text)
+            }
             return
         }
 
