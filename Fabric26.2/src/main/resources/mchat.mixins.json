@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"package": "cn.afeibaili.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"mixins": [
+      "MChatMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}
