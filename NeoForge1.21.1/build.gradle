@@ -8,7 +8,7 @@ plugins {
 
 version = mod_version
 group = mod_group_id
-var mchatVersion = "4.2.0"
+var mchatVersion = "${mod_version}"
 
 repositories {
     mavenLocal()
