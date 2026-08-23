@@ -10,6 +10,6 @@ tasks.named("shadowJar", ShadowJar::class) {
     exclude("module-info.class")
 }
 
-tasks.shadowJar {
+tasks.reobfJar {
     archiveFileName.set("mchat-forge-1.7.10-${properties["mchatVersion"]}-${properties["mchatUpdateInfo"]}.jar")
 }
