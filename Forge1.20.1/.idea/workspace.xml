@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ddec7689-001f-496f-8343-e8ff2d84e22f" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/../NeoForge1.21.1/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../NeoForge1.21.1/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NeoForge1.21.1/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../NeoForge1.21.1/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NeoForge1.21.1/src/main/kotlin/online/afeibaili/mchat/MChat.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../NeoForge1.21.1/src/main/kotlin/online/afeibaili/mchat/MChat.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NeoForge1.21.1/src/main/kotlin/online/afeibaili/mchat/MessageListener.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../NeoForge1.21.1/src/main/kotlin/online/afeibaili/mchat/MessageListener.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Forge1.7.10/dependencies.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../Forge1.7.10/dependencies.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Forge1.7.10/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Forge1.7.10/gradle.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,18 +54,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "AfeiBaili"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;AfeiBaili&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/AfeiBaili/MChat.git",
-    "accountId": "51cb5036-cc26-406d-82b5-f23933489457"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/AfeiBaili/MChat.git&quot;,
+    &quot;accountId&quot;: &quot;51cb5036-cc26-406d-82b5-f23933489457&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
@@ -238,6 +238,7 @@
       <workItem from="1784524369319" duration="2000" />
       <workItem from="1784543097950" duration="3823000" />
       <workItem from="1784557699309" duration="459000" />
+      <workItem from="1787495201367" duration="575000" />
     </task>
     <servers />
   </component>
