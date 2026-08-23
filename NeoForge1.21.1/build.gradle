@@ -186,5 +186,5 @@ idea {
 }
 
 jar {
-    archiveFileName = "${mod_id}-neoforge-1.21.1-${mod_version}.jar"
+    archiveFileName = "${mod_id}-neoforge-1.21.1-${mod_version}-${mchat_update_info}.jar"
 }

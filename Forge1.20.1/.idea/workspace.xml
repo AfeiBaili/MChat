@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ddec7689-001f-496f-8343-e8ff2d84e22f" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Forge1.7.10/dependencies.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../Forge1.7.10/dependencies.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Forge1.7.10/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Forge1.7.10/gradle.properties" afterDir="false" />
-    </list>
+    <list default="true" id="ddec7689-001f-496f-8343-e8ff2d84e22f" name="更改" comment="更新重连系统" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -239,10 +234,24 @@
       <workItem from="1784543097950" duration="3823000" />
       <workItem from="1784557699309" duration="459000" />
       <workItem from="1787495201367" duration="575000" />
+      <workItem from="1787498380936" duration="178000" />
     </task>
+    <task id="LOCAL-00001" summary="更新重连系统">
+      <option name="closed" value="true" />
+      <created>1787498549125</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1787498549125</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="更新重连系统" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新重连系统" />
   </component>
 </project>
