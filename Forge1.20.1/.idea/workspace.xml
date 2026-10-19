@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ddec7689-001f-496f-8343-e8ff2d84e22f" name="更改" comment="更新重连系统" />
+    <list default="true" id="ddec7689-001f-496f-8343-e8ff2d84e22f" name="更改" comment="更新重连系统">
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Forge1.7.10/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Forge1.7.10/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NeoForge1.21.1/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../NeoForge1.21.1/gradle.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -237,6 +241,7 @@
       <workItem from="1787498380936" duration="178000" />
       <workItem from="1787508692753" duration="199000" />
       <workItem from="1787511140050" duration="63000" />
+      <workItem from="1787513362721" duration="115000" />
     </task>
     <task id="LOCAL-00001" summary="更新重连系统">
       <option name="closed" value="true" />
