@@ -31,10 +31,11 @@ object Main : KotlinPlugin(
         MessageListener.load()
         server = MChatServer(config.port)
         server?.start()
-    }
 
-    override fun onDisable() {
-        server?.stop()
+        Runtime.getRuntime().addShutdownHook(Thread {
+            server?.stop()
+
+        })
     }
 
     fun log(message: Any) {

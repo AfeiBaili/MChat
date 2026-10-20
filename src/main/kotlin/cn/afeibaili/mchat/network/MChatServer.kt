@@ -31,8 +31,8 @@ class MChatServer(val port: Int) {
     }
 
     fun stop() {
-        GlobalChannelSet.channels.close().sync()
-        future?.channel()?.closeFuture()?.sync()
+        GlobalChannelSet.channels.close()
+        future?.channel()?.closeFuture()
         mainGroup.shutdownGracefully()
         workerGroup.shutdownGracefully()
         log("已关闭MChat服务器")
