@@ -30,6 +30,7 @@ object Main : KotlinPlugin(
         logger.info("MChat已就绪")
         MessageListener.load()
         server = MChatServer(config.port)
+        server?.start()
     }
 
     override fun onDisable() {
