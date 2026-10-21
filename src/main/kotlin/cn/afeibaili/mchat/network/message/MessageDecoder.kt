@@ -20,15 +20,22 @@ class MessageDecoder : ByteToMessageDecoder() {
         `in`: ByteBuf,
         out: MutableList<Any?>,
     ) {
-        if (`in`.readableBytes() < 4) return
-        val length: Int = `in`.getInt(0)
-        if (`in`.readableBytes() < length + 4) return
-        `in`.skipBytes(4)
-        val data = ByteArray(length)
-        `in`.readBytes(data)
-        val decrypt: ByteArray = Main.cipher.decrypt(data)
-        val text = String(decrypt, StandardCharsets.UTF_8)
-        val message: MessageType? = MessageType.fromString(text)
-        message?.let { out.add(it) }
+        runCatching {
+            if (`in`.readableBytes() < 4) return
+            val length: Int = `in`.getInt(0)
+            if (`in`.readableBytes() < length + 4) return
+            `in`.skipBytes(4)
+            val data = ByteArray(length)
+            `in`.readBytes(data)
+            val decrypt: ByteArray = Main.cipher.decrypt(data)
+            val text = String(decrypt, StandardCharsets.UTF_8)
+            val message: MessageType? = MessageType.fromString(text)
+            message?.let { out.add(it) }
+        }.onFailure { exception ->
+            class MessageException(msg: String) : RuntimeException(msg)
+            exception.printStackTrace()
+            MessageException("处理消息时出错").printStackTrace()
+            return
+        }
     }
 }
