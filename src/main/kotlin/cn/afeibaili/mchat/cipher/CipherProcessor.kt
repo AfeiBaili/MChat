@@ -32,12 +32,16 @@ class CipherProcessor(token: String) {
     }
 
     fun encrypt(array: ByteArray): ByteArray {
-        cipher.init(Cipher.ENCRYPT_MODE, keySpec)
-        return cipher.doFinal(array)
+        synchronized(this) {
+            cipher.init(Cipher.ENCRYPT_MODE, keySpec)
+            return cipher.doFinal(array)
+        }
     }
 
     fun decrypt(array: ByteArray): ByteArray {
-        cipher.init(Cipher.DECRYPT_MODE, keySpec)
-        return cipher.doFinal(array)
+        synchronized(this) {
+            cipher.init(Cipher.DECRYPT_MODE, keySpec)
+            return cipher.doFinal(array)
+        }
     }
 }

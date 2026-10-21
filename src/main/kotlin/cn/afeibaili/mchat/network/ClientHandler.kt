@@ -17,7 +17,9 @@ import io.netty.channel.ChannelInboundHandlerAdapter
 class ClientHandler : ChannelInboundHandlerAdapter() {
     override fun channelRead(ctx: ChannelHandlerContext, msg: Any) {
         val message: MessageType = msg as MessageType
-        Main.logger.info("接收消息: $message")
+        val type: MessageType? = MessageType.fromString(message.toString())
+        if (type is MessageType.Heartbeat) return
+        Main.logger.info("$message")
         MessageListener.sendToGroup(message)
         GlobalChannelSet.channels.forEach {
             if (it != ctx.channel()) it.writeAndFlush(message)
