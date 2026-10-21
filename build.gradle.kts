@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "cn.afeibaili"
-version = "5.0.1"
+version = "5.0.2"
 
 repositories {
     maven("https://maven.aliyun.com/repository/public")
