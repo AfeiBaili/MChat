@@ -32,9 +32,8 @@ class MessageDecoder : ByteToMessageDecoder() {
             val message: MessageType? = MessageType.fromString(text)
             message?.let { out.add(it) }
         }.onFailure { exception ->
-            class MessageException(msg: String) : RuntimeException(msg)
             exception.printStackTrace()
-            MessageException("处理消息时出错").printStackTrace()
+            ctx.channel().close()
             return
         }
     }
