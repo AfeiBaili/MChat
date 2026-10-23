@@ -17,7 +17,7 @@ object Main : KotlinPlugin(
     JvmPluginDescription(
         id = "cn.afeibaili.mchat",
         name = "MChat",
-        version = "5.0.3",
+        version = "5.0.8",
     ) {
         author("AfeiBaili")
     }) {

@@ -22,7 +22,7 @@ class MessageDecoder : ByteToMessageDecoder() {
     ) {
         runCatching {
             if (`in`.readableBytes() < 4) return
-            val length: Int = `in`.getInt(`in`.getInt(`in`.readerIndex()))
+            val length: Int = `in`.getInt(`in`.readerIndex())
             if (`in`.readableBytes() < length + 4) return
             `in`.skipBytes(4)
             val data = ByteArray(length)
